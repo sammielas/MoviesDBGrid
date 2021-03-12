@@ -1,0 +1,291 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Alegreya', serif;
+  background: var(--color-secondary);
+  color: var(--font-color)
+}
+
+.theme-light {
+  --color-primary: #0060df;
+  --color-secondary: #fbfbfe;
+  --color-accent: #fd6f53;
+  --font-color: #000000;
+}
+
+.theme-dark {
+  --color-primary: #17ed90;
+  --color-secondary: #243133;
+  --color-accent: #12cdea;
+  --font-color: #ffffff;
+}
+
+.title {
+  width: 100%;
+  background: rgb(13, 14, 13);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 20px 20px 20px
+}
+
+
+.title h1 {
+  margin: 0 20px;
+  color: grey;
+  line-height: 1.5em;
+  font-weight: 400;
+  font-size: 3rem;
+}
+
+.title a {
+  text-decoration: none;
+}
+
+.title form {
+  display: flex;
+  align-items: center;
+}
+
+/* The search bar */
+#search {
+  width: 230px;
+  border: 1px solid black;
+  outline: none;
+  border-radius: 20px;
+  padding: 10px;
+  margin-top: .7rem;
+  margin-bottom: .7rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+
+.nav_list {
+  padding: .2rem;
+  list-style: none;
+}
+
+
+.nav_list a {
+  color: white;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-decoration: none;
+  padding: 4px 5px;
+  width: 100%;
+  text-align: center;
+
+  transition: 240ms all
+}
+
+.nav_list .active {
+  text-decoration: underline;
+}
+
+.nav_list a:hover {
+  font-size: 1.4rem;
+  cursor: pointer
+}
+
+.theme-switcher {
+  border: none;
+  border-radius: 30%;
+  outline: none;
+  background-color: gray;
+}
+
+.theme-switcher :hover {
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+
+.movies-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+  align-items: stretch;
+  margin: 40px;
+
+}
+
+.movie-item .movie-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: .4em;
+}
+
+.movie-item .movie-info:hover {
+  transform: scale(1.04);
+  cursor: pointer;
+}
+
+.rating {
+  background-color: rgb(182, 10, 139);
+  color: white;
+  padding: .2em;
+  border-radius: 7px 0;
+}
+
+img {
+  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.3);
+  max-width: 100%;
+  border-radius: 0 20px;
+}
+
+img:hover {
+  transform: scale(1.04);
+  cursor: pointer;
+}
+
+.sub-heading {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 35px;
+  margin-bottom: -30px;
+}
+
+.text-box p {
+  padding: 20px;
+  line-height: 1.4rem;
+  letter-spacing: 2px;
+}
+
+.well {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@media screen and (min-width:600px) {
+  .title {
+    width: 100%;
+    background: rgb(13, 14, 13);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px 20px 20px;
+    z-index: 2;
+    position: relative;
+  }
+
+  .sub-heading {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 10px;
+    margin-bottom: -30px;
+  }
+
+  .movie-item .movie-info {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: -1em 2em;
+  }
+
+  .rating {
+    background-color: rgb(182, 10, 139);
+    color: white;
+    padding: .2em;
+    border-radius: 7px 0;
+  }
+
+  .well {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    margin-top: 0;
+    width: 100vw;
+
+  }
+
+  .movie-card {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .movie-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(26, 1, 26, 0.8);
+  }
+
+  .movie-card img,
+  .text-box {
+    margin: 30px;
+    z-index: 2;
+  }
+
+  .text-box {
+    max-width: 700px;
+    color: white;
+  }
+
+  .extra-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0;
+    text-align: left;
+    margin-left: -0.2em;
+
+  }
+
+  .year {
+    color: gray;
+  }
+
+  .overview,
+  .heading,
+  .Date {
+    text-align: justify;
+  }
+
+  .heading {
+    margin-left: .4em;
+  }
+
+  .overview h2 {
+    margin-left: .7em;
+  }
+
+  .Date {
+    margin-left: 1.1em;
+  }
+
+  .Date p {
+    margin-left: -1em;
+    ;
+  }
+
+}

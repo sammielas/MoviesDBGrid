@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movielas</title>
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/main.css">
+</head>
+
+<body>
+  <header class="title">
+    <a href="#">
+      <h1>Movielas</h1>
+    </a>
+    <ul class="nav">
+      <li class="nav_list">
+        <a href="index.html" class="active">
+          Trending
+        </a>
+      </li>
+      <li class="nav_list">
+        <a href="#">
+          Details
+        </a>
+      </li>
+      <li class="nav_list">
+        <a href="#">
+          Top Rated
+        </a>
+      </li>
+      <li class="nav_list">
+        <a href="#">
+          Bookmarks
+        </a>
+      </li>
+    </ul>
+    <form id="form">
+      <input type="text" id="search" placeholder="Search" class="search" />
+    </form>
+    <button id="toggle" onclick="toggleTheme()" class="theme-switcher"> <i class="fa fa-cog fa-3x"
+        aria-hidden="true"></i> </button>
+  </header>
+
+  <div id="movie" class="well">
+
+  </div>
+
+</body>
+<script src="main.js"></script>
+<script>
+  getMovie();
+</script>
+
+</html>
