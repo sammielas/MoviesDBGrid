@@ -174,7 +174,69 @@ img:hover {
   text-align: center;
 }
 
-@media screen and (min-width:600px) {
+.movie-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: rgba(26, 1, 26, 0.8);
+}
+
+.movie-card img,
+.text-box {
+  margin: 30px;
+  z-index: 2;
+}
+
+.text-box {
+  max-width: 700px;
+  color: white;
+  margin: 0 20px;
+}
+
+.extra-info {
+  display: none;
+}
+
+.year {
+  color: gray;
+}
+
+.overview,
+.heading,
+.Date {
+  text-align: center;
+}
+
+.heading {
+  margin-left: .4em;
+  margin: 0;
+}
+
+.overview h2 {
+  margin-left: .7em;
+  margin: 0;
+}
+
+.Date {
+  margin-left: 1.1em;
+}
+
+.Date p {
+  margin-left: -1em;
+  ;
+}
+
+@media screen and (min-width:850px) {
   .title {
     width: 100%;
     background: rgb(13, 14, 13);
