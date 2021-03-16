@@ -1,37 +1,53 @@
-const url = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=0e80477047d92b904f4f7b9c6ab7d3b0&page=1"
+const api_url = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=0e80477047d92b904f4f7b9c6ab7d3b0&page=1"
+const search_url = 'https://api.themoviedb.org/3/search/movie?api_key=0e80477047d92b904f4f7b9c6ab7d3b0&query=';
 
-let movieWrapper = document.querySelector(".movies-wrapper")
+const form = document.getElementById('form');
+const search = document.getElementById('search');
+
+
+let movieWrapper = document.getElementById('movies-wrapper')
 
 
 let output1 = "";
 
-
-
-
-
 var date = new Date('4-1-2015'); // M-D-YYYY
 
 var y = date.getFullYear();
-console.log(y)
 
 
+//get initial movies
+displayMovie(api_url);
+
+//search handler
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const searchTerm = search.value;
+
+  if (searchTerm && searchTerm !== '') {
+    displayMovie(search_url + searchTerm);
+    search.value = '';
+  } else {
+    window.location.reload();
+  }
+})
 
 
-function displayMovie() {
+function displayMovie(url) {
+
   fetch(url)
-    .then(response => response.json())
+    .then(response =>
+      response.json()
+    )
     .then(result => {
       let data = result.results;
-      console.log(data)
 
-
-
+      output1 = '';
       data.forEach((item, i) => {
 
-        let path = `https://image.tmdb.org/t/p/w500/${item.poster_path}`
+        let path = `https://image.tmdb.org/t/p/w500${item.poster_path}`
+
 
         let movieItem = `
-    
     <div class="movie-item">
     <a href ="#" onclick="movieSelected('${data[i].id}')">
         <img src = "${path}">
@@ -46,11 +62,13 @@ function displayMovie() {
 
 
       });
+
       movieWrapper.innerHTML = output1
 
     })
 }
-displayMovie();
+
+
 
 // function to set a given theme/color-scheme
 function setTheme(themeName) {
