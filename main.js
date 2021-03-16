@@ -1,4 +1,4 @@
-const url = "https://api.themoviedb.org/3/trending/all/day?api_key=0e80477047d92b904f4f7b9c6ab7d3b0"
+const url = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=0e80477047d92b904f4f7b9c6ab7d3b0&page=1"
 
 let movieWrapper = document.querySelector(".movies-wrapper")
 
