@@ -1,19 +1,14 @@
-const api_url = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=0e80477047d92b904f4f7b9c6ab7d3b0&page=1"
-const search_url = 'https://api.themoviedb.org/3/search/movie?api_key=0e80477047d92b904f4f7b9c6ab7d3b0&query=';
+const api_url =
+  'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=0e80477047d92b904f4f7b9c6ab7d3b0&page=1';
+const search_url =
+  'https://api.themoviedb.org/3/search/movie?api_key=0e80477047d92b904f4f7b9c6ab7d3b0&query=';
 
 const form = document.getElementById('form');
 const search = document.getElementById('search');
 
+let movieWrapper = document.getElementById('movies-wrapper');
 
-let movieWrapper = document.getElementById('movies-wrapper')
-
-
-let output1 = "";
-
-var date = new Date('4-1-2015'); // M-D-YYYY
-
-var y = date.getFullYear();
-
+let output1 = '';
 
 //get initial movies
 displayMovie(api_url);
@@ -29,23 +24,17 @@ form.addEventListener('submit', (e) => {
   } else {
     window.location.reload();
   }
-})
-
+});
 
 function displayMovie(url) {
-
   fetch(url)
-    .then(response =>
-      response.json()
-    )
-    .then(result => {
+    .then((response) => response.json())
+    .then((result) => {
       let data = result.results;
 
       output1 = '';
       data.forEach((item, i) => {
-
-        let path = `https://image.tmdb.org/t/p/w500${item.poster_path}`
-
+        let path = `https://image.tmdb.org/t/p/w500${item.poster_path}`;
 
         let movieItem = `
     <div class="movie-item">
@@ -57,18 +46,13 @@ function displayMovie(url) {
       <h4 class="rating"> ${item.vote_average}</h4>
        </div>  
     </div>
-    `
-        output1 += movieItem
-
-
+    `;
+        output1 += movieItem;
       });
 
-      movieWrapper.innerHTML = output1
-
-    })
+      movieWrapper.innerHTML = output1;
+    });
 }
-
-
 
 // function to set a given theme/color-scheme
 function setTheme(themeName) {
@@ -100,29 +84,39 @@ function movieSelected(id) {
   return false;
 }
 
-let output2 = "";
+let output2 = '';
 
 function getMovie() {
   let movieId = sessionStorage.getItem('movieId');
 
-  fetch('https://api.themoviedb.org/3/movie/' + movieId + '?api_key=0e80477047d92b904f4f7b9c6ab7d3b0')
-    .then(response => response.json())
-    .then(result => {
-      let data = result
+  fetch(
+    'https://api.themoviedb.org/3/movie/' +
+      movieId +
+      '?api_key=0e80477047d92b904f4f7b9c6ab7d3b0'
+  )
+    .then((response) => response.json())
+    .then((result) => {
+      let data = result;
 
-      console.log(data)
+      console.log(data);
 
-      let path = `https://image.tmdb.org/t/p/w342/${data.poster_path}`
-      let backdropPath = `https://image.tmdb.org/t/p/w342/${data.backdrop_path}`
+      let path = `https://image.tmdb.org/t/p/w342/${data.poster_path}`;
+      let backdropPath = `https://image.tmdb.org/t/p/w342/${data.backdrop_path}`;
       let date = new Date(data.release_date);
       let movieItem = `
       <div class = "movie-card" style = "background: url(${backdropPath});background-repeat:no-repeat;background-position:center center;background-size:cover;width:100%;">
         <img class="image-cover" src = "${path}">
         <div class="text-box">
-        <h1 class ="heading">${data.title} <span class="year" >(${date.getFullYear()})</span></h1>
+        <h1 class ="heading">${
+          data.title
+        } <span class="year" >(${date.getFullYear()})</span></h1>
 
          <div class="extra-info" >
-         <p> ${data.genres[0].name}<span>&#10023;</span></p>  <p> ${data.genres[1].name}<span>&#10023;</span></p> <p> ${data.genres[2].name}<span>&#10023;</span></p>
+         <p> ${data.genres[0].name}<span>&#10023;</span></p>  <p> ${
+        data.genres[1].name
+      }<span>&#10023;</span></p> <p> ${
+        data.genres[2].name
+      }<span>&#10023;</span></p>
          </div>
 
          <div class ="overview">
@@ -136,14 +130,11 @@ function getMovie() {
          </div>
          </div>
         </div>
-      `
-      output2 += movieItem
-      document.querySelector('.well').innerHTML = output2
+      `;
+      output2 += movieItem;
+      document.querySelector('.well').innerHTML = output2;
     })
     .catch((err) => {
       console.log(err);
     });
-
-
-
 }
